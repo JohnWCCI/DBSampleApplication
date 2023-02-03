@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBSampleConsole
+namespace DBSampleConsole.Models
 {
     public enum Grade
     {
@@ -17,7 +17,8 @@ namespace DBSampleConsole
     public class EnrollmentModel
     {
         [Key]
-        public int EnrollmentID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public int CourseID { get; set; }
         public int StudentID { get; set; }
         public Grade? Grade { get; set; }

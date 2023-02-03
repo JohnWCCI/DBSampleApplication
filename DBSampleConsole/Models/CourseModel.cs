@@ -6,17 +6,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBSampleConsole
+namespace DBSampleConsole.Models
 {
     [Table("Course")]
     public class CourseModel
     {
 
         [Key]
-        public int CourseID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(50)]
         public string Title { get; set; } = null!;
+
+        [Required]
+        [Range(0, 4)]
         public int Credits { get; set; }
 
-        public virtual ICollection<EnrollmentModel>? Enrollments { get; set; } 
+        public virtual ICollection<EnrollmentModel>? Enrollments { get; set; }
     }
 }
